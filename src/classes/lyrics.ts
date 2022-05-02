@@ -11,6 +11,7 @@ export class Lyrics {
           const browser = await puppeteer.launch({
             // executablePath: process.env.CHROME_PATH,
             // headless: false,
+            args: ["--no-sandbox"],
           });
           const page = await browser.newPage();
 

@@ -13,6 +13,7 @@ export class GoogleSearch {
         // executablePath: process.env.CHROME_PATH,
         // headless: false,
         // devtools: true,
+        args: ["--no-sandbox"],
       });
       const page = await browser.newPage();
       await page.goto(
@@ -61,6 +62,7 @@ export class GoogleSearch {
           // executablePath: process.env.CHROME_PATH,
           // headless: false,
           // devtools: true,
+          args: ["--no-sandbox"],
         });
         const page = await browser.newPage();
 
