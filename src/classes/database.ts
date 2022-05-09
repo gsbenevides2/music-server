@@ -4,6 +4,7 @@ import Knex from "knex";
 const sslEnabled = process.env.SSL_ENABLED === "true";
 const databaseString =
   process.env.DATABASE_URL + (sslEnabled ? "?ssl=true" : "");
+
 export class Database {
   knex: ReturnType<typeof Knex>;
   private isLoaded = false;
