@@ -1,9 +1,8 @@
 import "dotenv/config";
 import Knex from "knex";
 
-const sslEnabled = process.env.SSL_ENABLED === "true";
-const databaseString =
-  process.env.DATABASE_URL + (sslEnabled ? "?ssl=true" : "");
+// const sslEnabled = process.env.SSL_ENABLED === "true" ? { rejectUnauthorized: false} :
+// const databaseString = process.env.DATABASE_URL + (sslEnabled ? "?ssl=true" : "");
 
 export class Database {
   knex: ReturnType<typeof Knex>;
@@ -11,7 +10,12 @@ export class Database {
   constructor() {
     this.knex = Knex({
       client: "pg",
-      connection: databaseString,
+      connection: {
+        connectionString: process.env.DATABASE_URL,
+        ssl: {
+          rejectUnauthorized: false,
+        },
+      },
     });
   }
 
